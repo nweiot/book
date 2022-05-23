@@ -21,7 +21,7 @@ def login(id_user, pw_user):
 
 def search():
     choice=input("검색 방식 설정\n1.번호 조회\n2.도서 이름 조회\n3.저자 이름 조회\n4.종료")
-일단 추가해봄
+일단 추가해봤는데 쉽지 않더라고
 
 
 
