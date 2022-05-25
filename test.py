@@ -14,6 +14,17 @@ booklist = [
     BST('3', '김류은책', '김류은', 1)
 ]
 
+a = 4
+
+def book_in():
+    global a
+    b = input("도서 이름을 입력해 주세요:")
+    c = input("저자를 입력해주세요:")
+    d = input("기증할 책의 수량을 입력해주세요:")
+    booklist.append(BST(f"{a}", b, c, d))
+    a += 1
+    return 1
+
 def login(id_user, pw_user):
     choice = input("1.회원 가입\n2.로그인\n3.나가기\n 입력:")
     if choice == '1':
@@ -35,7 +46,7 @@ def login(id_user, pw_user):
         login(id_user, pw_user)
 
 def scan():
-    choice=input("검색 방식 설정\n1.번호 조회\n2.도서 이름 조회\n3.저자 이름 조회\n4.종료\nc.장바구니\n입력:")
+    choice=input("검색 방식 설정\n1.번호 조회\n2.도서 이름 조회\n3.저자 이름 조회\n4.종료\ng.도서기증하기\nc.장바구니\n입력:")
     if choice=="1":
         return 1
     elif choice=="2":
@@ -44,10 +55,14 @@ def scan():
         return 3
     elif choice == "4":
         exit(1)
+    elif choice == "g":
+       book_in()
+       return scan()
     elif choice == "c":
         choice=input(f"{shopping_bag[:]}\np.대여하기\nc.둘러보기")
         if choice == 'p':
-
+            print(f"{shopping_bag[:]}를 대여 합니다.")
+            exit(1)
         elif choice == 'c':
             return scan()
     else:
@@ -95,12 +110,8 @@ def sopping(num):
         if a.num == num:
             shopping_bag.append(a.name)
 
-
 login(None, None)
-shopping_bag=[]
 while 1:
     num = scan()
     num = search(num)
     sopping(num)
-
-
